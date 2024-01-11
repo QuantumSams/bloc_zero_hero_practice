@@ -1,1 +1,1 @@
-enum TypeOfConnection { wifi, mobile }
+enum TypeOfConnection { wifi, mobile, none}

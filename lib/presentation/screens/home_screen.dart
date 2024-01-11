@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:internet_image/constants/image_url.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:internet_image/constants/enum.dart';
+import 'package:internet_image/logic/cubit/internet_cubit.dart';
 import 'package:internet_image/presentation/widgets/internet_status.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,11 +18,16 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text("Internet Image!"),
       ),
-      body: const Center(
-        child: InternetStatus(
-          status: "Wifi",
-          url: noConnectionImage,
-        ),
+      body: BlocBuilder<InternetCubit, InternetState>(
+        builder: (context, state) {
+          if (state is ConnectedToInternet) {
+            return InternetStatus(typeOfConnection: state.connectionType);
+          } else {
+            return const InternetStatus(
+              typeOfConnection: TypeOfConnection.none,
+            );
+          }
+        },
       ),
     );
   }
