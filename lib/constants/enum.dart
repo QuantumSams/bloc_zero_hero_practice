@@ -1,0 +1,1 @@
+enum TypeOfConnection { wifi, mobile }
