@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: const Center(
         child: InternetStatus(
           status: "Wifi",
-          url: wifiImage,
+          url: noConnectionImage,
         ),
       ),
     );
